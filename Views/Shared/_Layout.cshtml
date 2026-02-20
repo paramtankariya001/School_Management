@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ABC School Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap"></i>
+            <span>ABC School Management</span>
+        </div>
+        <div class="sidebar-menu">
+            <a asp-controller="Home" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")">
+                <span class="sidebar-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+            <a asp-controller="Students" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Students" ? "active" : "")">
+                <span class="sidebar-icon">🎓</span>
+                <span>Students</span>
+            </a>
+            <a asp-controller="Teachers" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Teachers" ? "active" : "")">
+                <span class="sidebar-icon">👨‍🏫</span>
+                <span>Teachers</span>
+            </a>
+            <a asp-controller="Classes" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Classes" ? "active" : "")">
+                <span class="sidebar-icon">🏫</span>
+                <span>Classes</span>
+            </a>
+            <a asp-controller="Fees" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Fees" ? "active" : "")">
+                <span class="sidebar-icon">💰</span>
+                <span>Fees</span>
+            </a>
+            <a asp-controller="Reports" asp-action="Index" class="sidebar-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Reports" ? "active" : "")">
+                <span class="sidebar-icon">📊</span>
+                <span>Reports</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <h4 class="mb-0 text-primary">@ViewData["Title"]</h4>
+            <div class="ms-auto">
+                <span class="text-muted"><i class="fas fa-user-circle"></i> Admin</span>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+        <footer>
+            <div class="container">
+                &copy; 2026 - ABC School Management - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

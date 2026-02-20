@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Classes";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Manage Classes</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card text-center shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Class 10-A</h5>
+                <p class="card-text text-muted">Total Students: 35</p>
+                <a asp-action="Details" asp-route-id="10-A" class="btn btn-outline-primary btn-sm">View Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card text-center shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Class 10-B</h5>
+                <p class="card-text text-muted">Total Students: 32</p>
+                <a asp-action="Details" asp-route-id="10-B" class="btn btn-outline-primary btn-sm">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>

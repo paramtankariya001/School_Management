@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Attendance Report</h5>
+                <div class="d-flex align-items-end justify-content-around bg-light rounded p-4" style="height: 250px;">
+                    <div class="bg-primary rounded-top" style="width: 40px; height: 80%; position: relative;">
+                        <small class="text-dark position-absolute top-0 start-50 translate-middle-x mt-n4">Mon</small>
+                    </div>
+                    <div class="bg-primary rounded-top" style="width: 40px; height: 95%; position: relative;">
+                        <small class="text-dark position-absolute top-0 start-50 translate-middle-x mt-n4">Tue</small>
+                    </div>
+                    <div class="bg-primary rounded-top" style="width: 40px; height: 85%; position: relative;">
+                        <small class="text-dark position-absolute top-0 start-50 translate-middle-x mt-n4">Wed</small>
+                    </div>
+                    <div class="bg-primary rounded-top" style="width: 40px; height: 90%; position: relative;">
+                        <small class="text-dark position-absolute top-0 start-50 translate-middle-x mt-n4">Thu</small>
+                    </div>
+                    <div class="bg-primary rounded-top" style="width: 40px; height: 75%; position: relative;">
+                        <small class="text-dark position-absolute top-0 start-50 translate-middle-x mt-n4">Fri</small>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <span class="badge bg-light text-dark"><i class="fas fa-circle text-primary me-1"></i> Weekly Attendance Average: 85%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Performance Summary</h5>
+                <div class="d-flex align-items-center justify-content-center bg-light rounded" style="height: 250px;">
+                    <div class="position-relative" style="width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(#007bff 75%, #e9ecef 0);">
+                        <div class="position-absolute top-50 start-50 translate-middle bg-white rounded-circle d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                            <h3 class="mb-0 text-primary">75%</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 row text-center">
+                    <div class="col-6">
+                        <small class="text-muted d-block">Passed</small>
+                        <span class="fw-bold">450 Students</span>
+                    </div>
+                    <div class="col-6 border-start">
+                        <small class="text-muted d-block">Retakes</small>
+                        <span class="fw-bold">12 Students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

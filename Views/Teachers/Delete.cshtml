@@ -1,0 +1,20 @@
+@model Project.Models.Teacher
+@{
+    ViewData["Title"] = "Delete Teacher";
+}
+
+<div class="row mb-4">
+    <div class="col-md-12 text-center mt-5">
+        <i class="fas fa-exclamation-triangle text-danger fa-4x mb-4"></i>
+        <h2 class="fw-bold">Remove Teacher?</h2>
+        <p class="text-muted">You are about to remove <strong>@Model.Name</strong> from the teaching staff records.</p>
+        
+        <div class="mt-4">
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger btn-lg px-5 me-3">Delete Record</button>
+                <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-5">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

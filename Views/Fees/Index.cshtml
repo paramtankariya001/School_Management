@@ -1,0 +1,73 @@
+@model IEnumerable<Project.Models.FeeRecord>
+@{
+    ViewData["Title"] = "Fees";
+}
+
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Fee Collection Summary</h5>
+        <a asp-action="Collect" class="btn btn-primary btn-sm px-3"><i class="fas fa-plus me-2"></i>Collect New Fee</a>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-md-3 border-end">
+                <h4 class="fw-bold mb-0 text-primary">$@Model?.Sum(r => r.Amount).ToString("N0")</h4>
+                <small class="text-muted">Total Collected</small>
+            </div>
+            <div class="col-md-3 border-end">
+                <h4 class="fw-bold mb-0 text-success">@Model?.Count()</h4>
+                <small class="text-muted">Total Receipts</small>
+            </div>
+            <div class="col-md-3 border-end">
+                <h4 class="fw-bold mb-0 text-warning">@DateTime.Now.ToString("MMMM")</h4>
+                <small class="text-muted">Current Month</small>
+            </div>
+            <div class="col-md-3">
+                <h4 class="fw-bold mb-0 text-info">92%</h4>
+                <small class="text-muted">Target Met</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-header bg-white border-0 pt-4 px-4">
+        <h5 class="mb-0">Recent Fee Transactions</h5>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th class="ps-4">Receipt #</th>
+                    <th>Student Name</th>
+                    <th>Fee Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Mode</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var record in Model)
+                    {
+                        <tr>
+                            <td class="ps-4">INV-@record.Id.ToString("D4")</td>
+                            <td>@record.StudentName</td>
+                            <td>@record.FeeType</td>
+                            <td class="fw-bold text-success">$@record.Amount.ToString("N2")</td>
+                            <td>@record.PaymentDate.ToString("MMM dd, yyyy")</td>
+                            <td><span class="badge bg-light text-dark">@record.PaymentMode</span></td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-muted">No fee transactions recorded yet.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
