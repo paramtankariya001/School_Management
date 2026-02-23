@@ -1,16 +1,13 @@
 @model IEnumerable<Project.Models.Student>
 @{
-    ViewData["Title"] = "Students";
+    ViewData["Title"] = "My Students";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2 class="fw-bold mb-0">Students</h2>
-        <p class="text-muted small mb-0">Manage and view all registered students</p>
+        <h2 class="fw-bold mb-0">My Students</h2>
+        <p class="text-muted small mb-0">View all students in your assigned classes</p>
     </div>
-    <a asp-action="Add" class="btn btn-primary d-flex align-items-center gap-2">
-        <i class="fas fa-plus-circle"></i> Add New Student
-    </a>
 </div>
 
 <div class="table-container">
@@ -20,7 +17,7 @@
                 <th>Student</th>
                 <th>Class</th>
                 <th>Roll No</th>
-                <th>Status</th>
+                <th>Attendance</th>
                 <th class="text-end">Actions</th>
             </tr>
         </thead>
@@ -37,24 +34,26 @@
                                 </div>
                                 <div>
                                     <div class="fw-bold">@student.Name</div>
-                                    <div class="text-muted small">ID: #@student.Id</div>
+                                    <div class="text-muted small">@student.Email</div>
                                 </div>
                             </div>
                         </td>
                         <td>@student.Class</td>
                         <td><span class="fw-semibold">@student.RollNo</span></td>
-                        <td><span class="badge badge-soft-success"><i class="fas fa-circle me-1 small"></i> Active</span></td>
+                        <td>
+                            <div class="progress" style="height: 6px; width: 100px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <small class="text-muted">85%</small>
+                        </td>
                         <td class="text-end">
                             <div class="d-flex justify-content-end gap-2">
-                                <a asp-action="Details" asp-route-id="@student.Id" class="btn-action" title="View Details">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a asp-action="Edit" asp-route-id="@student.Id" class="btn-action" title="Edit Student">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@student.Id" class="btn-action btn-action-delete" title="Delete">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                <button class="btn-action" title="Mark Attendance">
+                                    <i class="fas fa-calendar-check text-success"></i>
+                                </button>
+                                <button class="btn-action" title="Record Grades">
+                                    <i class="fas fa-file-invoice text-primary"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -65,7 +64,7 @@
                 <tr>
                     <td colspan="5" class="text-center py-5 text-muted">
                         <i class="fas fa-users-slash fa-3x mb-3 opacity-25"></i>
-                        <p>No student records found.</p>
+                        <p>No student records assigned to you.</p>
                     </td>
                 </tr>
             }

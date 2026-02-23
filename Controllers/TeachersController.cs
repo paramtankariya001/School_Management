@@ -18,6 +18,16 @@ namespace Project.Controllers
             return View(teachers);
         }
 
+        public IActionResult Details(int id)
+        {
+            var teacher = _context.Teachers.Find(id);
+            if (teacher == null)
+                return NotFound();
+
+            ViewData["Title"] = "Teacher Details - " + teacher.Name;
+            return View(teacher);
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -51,9 +61,23 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult Edit(Models.Teacher teacher)
         {
-            if (ModelState.IsValid)
+            var existing = _context.Teachers.Find(teacher.Id);
+            if (existing == null)
+                return NotFound();
+
+            // Update only the fields from the form
+            existing.Name = teacher.Name;
+            existing.Subject = teacher.Subject;
+            existing.Department = teacher.Department;
+            existing.Email = teacher.Email;
+            existing.Phone = teacher.Phone;
+            existing.JoiningDate = teacher.JoiningDate;
+            existing.Qualification = teacher.Qualification;
+            existing.Address = teacher.Address;
+
+            if (ModelState.IsValid || (!string.IsNullOrEmpty(existing.Username) && !string.IsNullOrEmpty(existing.Password)))
             {
-                _context.Teachers.Update(teacher);
+                _context.Teachers.Update(existing);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

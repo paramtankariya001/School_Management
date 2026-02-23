@@ -44,6 +44,7 @@
                     <th>Amount</th>
                     <th>Date</th>
                     <th>Mode</th>
+                    <th class="text-end pe-4">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +59,10 @@
                             <td class="fw-bold text-success">$@record.Amount.ToString("N2")</td>
                             <td>@record.PaymentDate.ToString("MMM dd, yyyy")</td>
                             <td><span class="badge bg-light text-dark">@record.PaymentMode</span></td>
+                            <td class="text-end pe-4">
+                                <a asp-action="Edit" asp-route-id="@record.Id" class="btn btn-sm btn-outline-primary me-1"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@record.Id" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a>
+                            </td>
                         </tr>
                     }
                 }

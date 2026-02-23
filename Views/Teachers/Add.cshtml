@@ -3,81 +3,103 @@
     ViewData["Title"] = "Add New Teacher";
 }
 
-<div class="row mb-4">
-    <div class="col-md-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-action="Index">Teachers</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add New Teacher</li>
-            </ol>
-        </nav>
-        <h2>Add New Teacher</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-0">Add New Teacher</h2>
+        <p class="text-muted small mb-0">Onboard a new faculty member with system access</p>
     </div>
+    <a asp-action="Index" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+        <i class="fas fa-arrow-left"></i> Back to List
+    </a>
 </div>
 
-<div class="card shadow-sm border-0">
-    <div class="card-body p-4">
-        <form asp-action="Add" method="post">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Name" class="form-label">Full Name</label>
-                    <input asp-for="Name" class="form-control" placeholder="Enter teacher's full name" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Subject" class="form-label">Subject Specialization</label>
-                    <input asp-for="Subject" class="form-control" placeholder="e.g. Mathematics, Science" />
-                    <span asp-validation-for="Subject" class="text-danger"></span>
+<div class="dashboard-card shadow-sm border-0">
+    <form asp-action="Add" method="post">
+        <div class="row">
+            <div class="col-lg-8">
+                <h5 class="fw-bold mb-4 text-primary"><i class="fas fa-user-tie me-2"></i>Professional Profile</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label small fw-bold">Full Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Dr. Sarah Wilson" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Subject" class="form-label small fw-bold">Subject Specialization</label>
+                        <input asp-for="Subject" class="form-control" placeholder="e.g. Physics" />
+                        <span asp-validation-for="Subject" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Department" class="form-label small fw-bold">Department</label>
+                        <select asp-for="Department" class="form-select">
+                            <option value="">Select Department</option>
+                            <option value="Science">Science</option>
+                            <option value="Humanities">Humanities</option>
+                            <option value="Languages">Languages</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label small fw-bold">Email Address</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="sarah@school.com" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label small fw-bold">Phone Number</label>
+                        <input asp-for="Phone" class="form-control" placeholder="+1 234 567 890" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="JoiningDate" class="form-label small fw-bold">Joining Date</label>
+                        <input asp-for="JoiningDate" type="date" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Qualification" class="form-label small fw-bold">Educational Qualification</label>
+                        <input asp-for="Qualification" class="form-control" placeholder="e.g. PhD in Astrophysics" />
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Address" class="form-label small fw-bold">Residential Address</label>
+                        <textarea asp-for="Address" class="form-control" rows="3" placeholder="Current address"></textarea>
+                    </div>
                 </div>
             </div>
+            
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="p-4 bg-light rounded-4 border" style="border-left: 4px solid var(--primary) !important;">
+                    <h5 class="fw-bold mb-4 text-primary"><i class="fas fa-shield-alt me-2"></i>Faculty Access</h5>
+                    <p class="text-muted small mb-4">Create the credentials for the teacher to access their portal.</p>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label small fw-bold">Staff Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-id-badge text-muted"></i></span>
+                            <input asp-for="Username" class="form-control border-start-0" placeholder="staff_sarah" />
+                        </div>
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label small fw-bold">Access Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-key text-muted"></i></span>
+                            <input asp-for="Password" class="form-control border-start-0" type="password" placeholder="••••••••" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="alert alert-warning border-0 p-3 small mb-0">
+                        <i class="fas fa-exclamation-triangle me-1"></i> Faculty members have access to student academic records.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Department" class="form-label">Department</label>
-                    <select asp-for="Department" class="form-select">
-                        <option value="">Select Department</option>
-                        <option value="Science">Science</option>
-                        <option value="Humanities">Humanities</option>
-                        <option value="Languages">Languages</option>
-                        <option value="Arts">Arts</option>
-                        <option value="Sports">Sports</option>
-                    </select>
-                    <span asp-validation-for="Department" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Email" class="form-label">Email Address</label>
-                    <input asp-for="Email" type="email" class="form-control" placeholder="teacher.name@school.com" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Phone" class="form-label">Phone Number</label>
-                    <input asp-for="Phone" class="form-control" placeholder="Enter contact number" />
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="JoiningDate" class="form-label">Joining Date</label>
-                    <input asp-for="JoiningDate" type="date" class="form-control" />
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Qualification" class="form-label">Qualification</label>
-                <input asp-for="Qualification" class="form-control" placeholder="e.g. M.Sc, B.Ed, PhD" />
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Address" class="form-label">Residential Address</label>
-                <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter full address"></textarea>
-            </div>
-
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary px-4"><i class="fas fa-save me-2"></i>Save Teacher</button>
-                <a asp-action="Index" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
-            </div>
-        </form>
-    </div>
+        <div class="border-top mt-4 pt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary px-5 py-2">
+                <i class="fas fa-user-check me-2"></i> Register Faculty
+            </button>
+            <a asp-action="Index" class="btn btn-light px-4 py-2">Discard</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

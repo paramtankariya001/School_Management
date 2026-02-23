@@ -22,5 +22,11 @@ namespace Project.Models
         public string Qualification { get; set; }
         public DateTime JoiningDate { get; set; }
         public string Address { get; set; }
+
+        [Required]
+        public string Username { get; set; }
+
+        [Required]
+        public string Password { get; set; }
     }
 }

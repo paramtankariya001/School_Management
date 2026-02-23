@@ -1,0 +1,94 @@
+@model Project.Models.Teacher
+@{
+    ViewData["Title"] = "Teacher Profile";
+}
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="dashboard-card text-center mb-4">
+            <div class="user-avatar mx-auto mb-3" style="width: 100px; height: 100px; font-size: 2.5rem; background: var(--primary);">
+                @(Model.Name?.FirstOrDefault().ToString().ToUpper() ?? "T")
+            </div>
+            <h4 class="fw-bold">@Model.Name</h4>
+            <p class="text-muted">@Model.Department Department</p>
+            <div class="badge badge-soft-success">Active Faculty</div>
+        </div>
+
+        <div class="dashboard-card">
+            <h5 class="fw-bold mb-4">Quick Links</h5>
+            <div class="d-grid gap-2">
+                <a asp-action="Profile" class="btn sidebar-link active">
+                    <i class="fas fa-user-circle"></i> Profile Overview
+                </a>
+                <a asp-action="Students" class="btn sidebar-link">
+                    <i class="fas fa-user-graduate"></i> My Students
+                </a>
+                <a href="/Account/Logout" class="btn sidebar-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="dashboard-card mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Professional Information</h5>
+                <button class="btn btn-sm btn-light"><i class="fas fa-edit"></i> Edit</button>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label class="text-muted small">Full Name</label>
+                    <p class="fw-bold">@Model.Name</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="text-muted small">Subject Specialist</label>
+                    <p class="fw-bold">@Model.Subject</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="text-muted small">Department</label>
+                    <p class="fw-bold">@Model.Department</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="text-muted small">Email Address</label>
+                    <p class="fw-bold">@Model.Email</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="text-muted small">Phone Number</label>
+                    <p class="fw-bold">@Model.Phone</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="text-muted small">Joining Date</label>
+                    <p class="fw-bold">@Model.JoiningDate.ToString("dd MMM yyyy")</p>
+                </div>
+                <div class="col-md-12">
+                    <label class="text-muted small">Qualification</label>
+                    <p class="fw-bold">@Model.Qualification</p>
+                </div>
+                <div class="col-12">
+                    <label class="text-muted small">Home Address</label>
+                    <p class="fw-bold">@Model.Address</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <h5 class="fw-bold mb-4">Academic Workload</h5>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <p class="text-muted small mb-1">Total Classes</p>
+                    <h3 class="fw-bold text-primary">12</h3>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-muted small mb-1">Students Under Care</p>
+                    <h3 class="fw-bold text-success">145</h3>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-muted small mb-1">Pending Appraisals</p>
+                    <h3 class="fw-bold text-warning">2</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,83 +3,108 @@
     ViewData["Title"] = "Add New Student";
 }
 
-<div class="row mb-4">
-    <div class="col-md-12">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-action="Index">Students</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add New Student</li>
-            </ol>
-        </nav>
-        <h2>Add New Student</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-0">Add New Student</h2>
+        <p class="text-muted small mb-0">Create a new student profile and login credentials</p>
     </div>
+    <a asp-action="Index" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+        <i class="fas fa-arrow-left"></i> Back to List
+    </a>
 </div>
 
-<div class="card shadow-sm border-0">
-    <div class="card-body p-4">
-        <form asp-action="Add" method="post">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Name" class="form-label">Full Name</label>
-                    <input asp-for="Name" class="form-control" placeholder="Enter student's full name" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Class" class="form-label">Class</label>
-                    <select asp-for="Class" class="form-select">
-                        <option value="">Select Class</option>
-                        <option value="10th A">10th A</option>
-                        <option value="10th B">10th B</option>
-                        <option value="9th A">9th A</option>
-                        <option value="9th B">9th B</option>
-                    </select>
-                    <span asp-validation-for="Class" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="RollNo" class="form-label">Roll Number</label>
-                    <input asp-for="RollNo" class="form-control" placeholder="Enter roll number" />
-                    <span asp-validation-for="RollNo" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Email" class="form-label">Email Address</label>
-                    <input asp-for="Email" type="email" class="form-control" placeholder="example@school.com" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
-                    <input asp-for="DateOfBirth" type="date" class="form-control" />
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Gender" class="form-label">Gender</label>
-                    <div class="mt-2">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" asp-for="Gender" value="Male" id="genderMale">
-                            <label class="form-check-label" for="genderMale">Male</label>
+<div class="dashboard-card shadow-sm border-0">
+    <form asp-action="Add" method="post">
+        <div class="row">
+            <div class="col-lg-8">
+                <h5 class="fw-bold mb-4 text-primary"><i class="fas fa-id-card me-2"></i>Personal Details</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label small fw-bold">Full Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="John Doe" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Class" class="form-label small fw-bold">Class</label>
+                        <select asp-for="Class" class="form-select">
+                            <option value="">Select Class</option>
+                            <option value="10th A">10th A</option>
+                            <option value="10th B">10th B</option>
+                            <option value="9th A">9th A</option>
+                            <option value="9th B">9th B</option>
+                        </select>
+                        <span asp-validation-for="Class" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="RollNo" class="form-label small fw-bold">Roll Number</label>
+                        <input asp-for="RollNo" class="form-control" placeholder="101" />
+                        <span asp-validation-for="RollNo" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label small fw-bold">Email Address</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="DateOfBirth" class="form-label small fw-bold">Date of Birth</label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Gender" class="form-label small fw-bold">Gender</label>
+                        <div class="d-flex gap-3 mt-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Gender" value="Male" id="genderMale" checked>
+                                <label class="form-check-label" for="genderMale">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Gender" value="Female" id="genderFemale">
+                                <label class="form-check-label" for="genderFemale">Female</label>
+                            </div>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" asp-for="Gender" value="Female" id="genderFemale">
-                            <label class="form-check-label" for="genderFemale">Female</label>
-                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Address" class="form-label small fw-bold">Address</label>
+                        <textarea asp-for="Address" class="form-control" rows="3" placeholder="Residential Address"></textarea>
                     </div>
                 </div>
             </div>
-
-            <div class="mb-3">
-                <label asp-for="Address" class="form-label">Address</label>
-                <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter residential address"></textarea>
+            
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="p-4 bg-light rounded-4 border">
+                    <h5 class="fw-bold mb-4 text-primary"><i class="fas fa-lock me-2"></i>Login Security</h5>
+                    <p class="text-muted small mb-4">Set up the credentials the student will use to access the portal.</p>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label small fw-bold">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-user-tag text-muted"></i></span>
+                            <input asp-for="Username" class="form-control border-start-0" placeholder="student_roll101" />
+                        </div>
+                        <span asp-validation-for="Username" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label small fw-bold">Temporary Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="fas fa-key text-muted"></i></span>
+                            <input asp-for="Password" class="form-control border-start-0" type="password" placeholder="••••••••" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="alert alert-info border-0 p-3 small mb-0">
+                        <i class="fas fa-info-circle me-1"></i> Students can change their password after their first login.
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="mt-4">
-                <button type="submit" class="btn btn-primary px-4"><i class="fas fa-save me-2"></i>Save Student</button>
-                <a asp-action="Index" class="btn btn-outline-secondary px-4 ms-2">Cancel</a>
-            </div>
-        </form>
-    </div>
+        <div class="border-top mt-4 pt-4 d-flex gap-2">
+            <button type="submit" class="btn btn-primary px-5 py-2">
+                <i class="fas fa-check-circle me-2"></i> Register Student
+            </button>
+            <a asp-action="Index" class="btn btn-light px-4 py-2">Discard</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

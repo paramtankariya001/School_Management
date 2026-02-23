@@ -36,5 +36,45 @@ namespace Project.Controllers
             }
             return View(record);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var record = _context.FeeRecords.Find(id);
+            if (record == null) return NotFound();
+            return View(record);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Models.FeeRecord record)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.FeeRecords.Update(record);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(record);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var record = _context.FeeRecords.Find(id);
+            if (record == null) return NotFound();
+            return View(record);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var record = _context.FeeRecords.Find(id);
+            if (record != null)
+            {
+                _context.FeeRecords.Remove(record);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

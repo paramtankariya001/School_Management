@@ -1,0 +1,63 @@
+@model IEnumerable<Project.Models.FeeRecord>
+@{
+    ViewData["Title"] = "My Fees";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-0">My Fee Records</h2>
+        <p class="text-muted small mb-0">Track your payment history and pending dues</p>
+    </div>
+    <div class="dashboard-card py-2 px-4 shadow-sm border">
+        <span class="text-muted small">Total Paid:</span>
+        <span class="fw-bold text-success ms-2">$@Model.Sum(f => f.Amount).ToString("N0")</span>
+    </div>
+</div>
+
+<div class="table-container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Fee Type</th>
+                <th>Payment Mode</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th class="text-end">Receipt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var fee in Model)
+                {
+                    <tr>
+                        <td><span class="fw-semibold">@fee.PaymentDate.ToString("dd MMM yyyy")</span></td>
+                        <td>@fee.FeeType</td>
+                        <td>
+                            <span class="badge bg-light text-dark">
+                                <i class="fas fa-credit-card me-1 small"></i> @fee.PaymentMode
+                            </span>
+                        </td>
+                        <td><span class="fw-bold text-dark">$@fee.Amount.ToString("N0")</span></td>
+                        <td><span class="badge badge-soft-success"><i class="fas fa-check-circle me-1 small"></i> Paid</span></td>
+                        <td class="text-end">
+                            <button class="btn-action" title="Download Receipt">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center py-5 text-muted">
+                        <i class="fas fa-receipt fa-3x mb-3 opacity-25"></i>
+                        <p>No fee records found for your account.</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
